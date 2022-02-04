@@ -6,7 +6,7 @@ import {
   Name,
   Number,
   DeleteButton,
-} from "./Contactsist.styled";
+} from "./ContactsList.styled";
 
 const ContactsList = ({ contacts, onDeleteContact }) => {
   return (
