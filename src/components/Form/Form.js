@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ContactsForm, InputField, Button } from "./Form.styled";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/conacts-actions";
+import { useDispatch } from "react-redux";
 
-const Form = ({ onSubmitProp }) => {
+const Form = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     switch (event.target.name) {
@@ -26,8 +27,7 @@ const Form = ({ onSubmitProp }) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name);
-    onSubmitProp({ name, number });
+    dispatch(contactsActions.onSubmitProp({ name, number }));
     reset();
   };
 
@@ -62,10 +62,7 @@ const Form = ({ onSubmitProp }) => {
   );
 };
 
-const mapDisputchToProps = (dispatch) => ({
-  onSubmitProp: (data) => dispatch(contactsActions.formSubmitHandler(data)),
-});
-export default connect(null, mapDisputchToProps)(Form);
+export default Form;
 
 Form.propTypes = {
   onSubmitProp: PropTypes.func,

@@ -1,22 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { SearchInput } from "./SearchField.styled";
-import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/conacts-actions";
+import { useSelector, useDispatch } from "react-redux";
 
-const SearchField = ({ value, onChange }) => {
-  console.log(value);
-  return <SearchInput type="text" value={value} onChange={onChange} />;
+const SearchField = () => {
+  const value = useSelector((state) => state.contacts.filter);
+  const dispatch = useDispatch();
+
+  return (
+    <SearchInput
+      type="text"
+      value={value}
+      onChange={(e) =>
+        dispatch(contactsActions.onContactSearch(e.currentTarget.value))
+      }
+    />
+  );
 };
-const mapStateToProps = (state) => ({
-  value: state.contacts.filter,
-});
-const mapDispatchToProps = (dispatch) => ({
-  onChange: (e) =>
-    dispatch(contactsActions.onContactSearch(e.currentTarget.value)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
+export default SearchField;
 
 SearchField.propTypes = {
   value: PropTypes.string,
