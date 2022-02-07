@@ -7,6 +7,7 @@ import {
   Number,
   DeleteButton,
 } from "./ContactsList.styled";
+import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/conacts-actions";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -29,7 +30,7 @@ const ContactsList = () => {
         <ListItem key={id}>
           <Name>{name}</Name>
           <Number>{number}</Number>
-          <DeleteButton onClick={onDeleteContact} />
+          <DeleteButton onClick={() => onDeleteContact(id)} />
         </ListItem>
       ))}
     </List>

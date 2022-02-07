@@ -27,7 +27,7 @@ const Form = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(contactsActions.onSubmitProp({ name, number }));
+    dispatch(contactsActions.formSubmitHandler({ name, number }));
     reset();
   };
 
