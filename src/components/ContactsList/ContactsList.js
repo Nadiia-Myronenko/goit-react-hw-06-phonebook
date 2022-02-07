@@ -7,7 +7,6 @@ import {
   Number,
   DeleteButton,
 } from "./ContactsList.styled";
-import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/conacts-actions";
 import { useSelector, useDispatch } from "react-redux";
 
