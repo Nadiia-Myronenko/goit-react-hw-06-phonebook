@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { ContactsForm, InputField, Button } from "./Form.styled";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import contactsActions from "../../redux/contacts/conacts-actions";
 
 const Form = ({ onSubmitProp }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
   const handleInputChange = (event) => {
     switch (event.target.name) {
       case "name":
@@ -58,7 +61,12 @@ const Form = ({ onSubmitProp }) => {
     </ContactsForm>
   );
 };
+
+const mapDisputchToProps = (dispatch) => ({
+  onSubmitProp: (data) => dispatch(contactsActions.formSubmitHandler(data)),
+});
+export default connect(null, mapDisputchToProps)(Form);
+
 Form.propTypes = {
   onSubmitProp: PropTypes.func,
 };
-export default Form;

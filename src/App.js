@@ -8,7 +8,7 @@ import shortid from "shortid";
 import SearchField from "./components/SearchField/SearchField";
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
+  /*const [contacts, setContacts] = useState(() => {
     return (
       JSON.parse(localStorage.getItem("contacts")) || [
         { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -53,19 +53,21 @@ const App = () => {
   const normalizedFilter = filter.toLowerCase();
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(normalizedFilter)
-  );
+  );*/
   return (
     <Wrapper>
       <MainHeader />
-      <Form onSubmitProp={formSubmitHandler} />
+      <Form />
       <h2>Contacts</h2>
-      <SearchField value={filter} onChange={onContactSearch} />
-      <ContactsList
-        contacts={filteredContacts}
-        onDeleteContact={deleteContact}
-      />
+      <SearchField />
+      <ContactsList />
     </Wrapper>
   );
 };
 
 export default App;
+/*<SearchField value={filter} onChange={onContactSearch} />
+      <ContactsList
+        contacts={filteredContacts}
+        onDeleteContact={deleteContact}
+      />*/
